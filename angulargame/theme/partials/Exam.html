@@ -1,0 +1,39 @@
+     <div class="jumbotron">
+        <h1>{{headline}}</h1>
+      </div>
+      <div class="alert alert-success" role="alert">
+        <strong>{{msg}}</strong>
+      </div>
+	  <div class="myForm">
+		<form ng-app="myApp" name="myForm" class="myForm" novalidate>
+		<p>Firstname:<br>
+		<input type="text" name="name" ng-model="name" required>  <!--Una forma más fácil de validar -->
+		The form is valid: {{myForm.name.$valid}}
+		</p>
+		<p>Lastname:<br>
+		<input type="text" name="lastname" ng-model="lastname" required>
+		<span style="color:red" ng-show="myForm.lastname.$dirty && myForm.lastname.$invalid">
+		<span ng-show="myForm.lastname.$error.required">Lastname is required.</span>
+		</span>
+		</p>
+		<p>Password:<br>
+		<input type="password" name="pass" ng-model="pass" required>
+		<span style="color:red" ng-show="myForm.pass.$invalid">
+		<span ng-show="myForm.pass.$error.required">Password is required.</span>
+		</span>
+		</p>
+		<p>Email:<br>
+		<input type="email" name="email" ng-model="email" required>
+		<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+		<span ng-show="myForm.email.$error.required">Email is required.</span>
+		<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+		</span>
+		</p>
+		<p>
+		<input type="submit"  ng-click ="myFunc()" 
+		ng-disabled="myForm.name.$dirty && myForm.name.$invalid || myForm.email.$dirty && myForm.email.$invalid 
+		|| myForm.lastname.$dirty && myForm.lastname.$invalid || myForm.pass.$invalid" value="Send information">
+		</p>
+		</div>
+		<h1 align="center">{{ms}}<h1>
+		</form>
